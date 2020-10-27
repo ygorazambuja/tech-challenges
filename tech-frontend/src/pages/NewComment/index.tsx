@@ -7,8 +7,8 @@ interface NewComment {
 }
 const App: React.FC = () => {
     const [input, setInput] = useState("");
-    let history = useHistory();
-    let { id } = useParams<NewComment>();
+    const history = useHistory();
+    const { id } = useParams<NewComment>();
     return (
         <div
             className="container-fluid"

@@ -1,5 +1,5 @@
 # Use postgres/example user/password credentials
-version: '3.1'
+version: "3.1"
 
 services:
   db:
@@ -17,17 +17,27 @@ services:
 
   node:
     # image: ygorazambuja/tech-backend
-    build: '.'
+    build: "./tech-backend/."
     volumes:
       - .:/home/node/api
       - /home/node/api/node_modules
     ports:
       - 3000:3000
-    command: 'npm run start'
+    command: "npm run start"
     environment:
       - NODE_ENV=production
     depends_on:
       - db
+    networks:
+      - app-connect
+
+  front-end:
+    build: "./tech-frontend/."
+    ports:
+      - 3001:3000
+    command: "yarn start"
+    depends_on:
+      - node
     networks:
       - app-connect
 

@@ -18,12 +18,11 @@ interface Comment {
     message: string;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ post, ...rest }) => {
+const PostCard: React.FC<PostCardProps> = ({ post }) => {
     const [postFull, setPostFull] = useState<Post>();
 
     async function loadComments() {
         const { data } = await api.get(`/posts/${post.id}/comments`);
-        console.log(data);
         setPostFull(data);
     }
 
