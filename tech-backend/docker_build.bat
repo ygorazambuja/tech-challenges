@@ -1,0 +1,1 @@
+docker build -t ygorazambuja/tech-backend .
