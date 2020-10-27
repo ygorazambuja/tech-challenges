@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {connect} from 'react-redux';
+import DayQuote from '../components/DayQuote';
 import TodoComponent from '../components/TodoComponent';
 
 import {addTodo} from '../store/actions/todoActions';
@@ -18,7 +19,7 @@ const Home = (props) => {
             <View>
                 <Text style={styles.title}>Todo's</Text>
             </View>
-
+            <DayQuote></DayQuote>
             {props.todos.length === 0 && (
                 <View style={styles.noToDoContainer}>
                     <Text style={styles.noToDoText}>Sem To do's</Text>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     },
     flatListComponent: {
         marginTop: 20,
-        height: Dimensions.get('window').height - 175,
+        maxHeight: '65%',
         padding: 10,
     },
     button: {
