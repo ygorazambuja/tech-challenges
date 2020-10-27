@@ -10,9 +10,17 @@ services:
       POSTGRES_DB: tech-backend
     ports:
       - 5432:5432
+    volumes:
+      - postgres-data:/data
+    networks:
+      - app-connect
 
   node:
-    image: ygorazambuja/tech-backend
+    # image: ygorazambuja/tech-backend
+    build: '.'
+    volumes:
+      - .:/home/node/api
+      - /home/node/api/node_modules
     ports:
       - 3000:3000
     command: 'npm run start'
@@ -20,9 +28,11 @@ services:
       - NODE_ENV=production
     depends_on:
       - db
+    networks:
+      - app-connect
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+volumes:
+  postgres-data:
+networks:
+  app-connect:
+    driver: bridge
