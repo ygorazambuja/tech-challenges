@@ -19,7 +19,7 @@ const Home = (props) => {
             <View>
                 <Text style={styles.title}>Todo's</Text>
             </View>
-            <DayQuote></DayQuote>
+            <DayQuote />
             {props.todos.length === 0 && (
                 <View style={styles.noToDoContainer}>
                     <Text style={styles.noToDoText}>Sem To do's</Text>
